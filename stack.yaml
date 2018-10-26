@@ -1,0 +1,6 @@
+resolver:
+  lts-11.22
+
+extra-deps:
+  - clr-inline-0.2.0.1
+  - hedgehog-0.6.1

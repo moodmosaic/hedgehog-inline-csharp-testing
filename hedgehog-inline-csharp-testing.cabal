@@ -1,0 +1,68 @@
+version: 0
+
+name:
+  hedgehog-inline-csharp-testing
+author:
+  Nikos Baxevanis
+maintainer:
+  Nikos Baxevanis <nikos.baxevanis@gmail.com>
+homepage:
+  https://github.com/moodmosaic/hedgehog-inline-csharp-testing
+synopsis:
+  Hedgehog's model-based state machine testing from C#.
+description:
+  Example of using Hedgehog's model-based state machine testing together with
+  C# via clr-inline.
+category:
+  Testing
+license:
+  BSD3
+license-file:
+  LICENSE
+cabal-version:
+  >= 1.8
+build-type:
+  Simple
+tested-with:
+    GHC == 8.2.2
+extra-source-files:
+  README.md
+
+source-repository head
+  type: git
+  location: git://github.com/moodmosaic/hedgehog-inline-csharp-testing.git
+
+library
+  build-depends:
+        base                            >= 3          && < 5
+      , clr-inline                      >= 0.2        && < 0.3
+      , template-haskell                >= 2.10       && < 2.15
+
+  ghc-options:
+    -Wall
+
+  hs-source-dirs:
+    src
+
+  exposed-modules:
+    CircularBuffer
+
+test-suite test
+  type:
+    exitcode-stdio-1.0
+
+  main-is:
+    test.hs
+
+  ghc-options:
+    -Wall -threaded -O2
+
+  hs-source-dirs:
+    test
+
+  build-depends:
+      hedgehog-inline-csharp-testing
+    , hedgehog                        >= 0.6.1      && < 0.7
+    , template-haskell                >= 2.10       && < 2.15
+    , clr-inline                      >= 0.2.0.1    && < 0.3
+    , base                            >= 3          && < 5
